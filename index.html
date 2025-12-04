@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Healthcare Companion — Legit Upgrade</title>
+
+  <!-- Chart.js for simple charts -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+ <!-- Quiz Modal -->
+<div id="questionModal" class="modal" style="display:flex; flex-direction:column; align-items:center; justify-content:center; height:100vh; background:#8e44ad; color:white;">
+  <div class="modal-content" style="background:#9b59b6; padding:20px; border-radius:15px; width:90%; max-width:500px; text-align:center;">
+    <h2 id="questionTitle">Question will appear here</h2>
+    <div id="answerOptions" style="margin-top:15px; display:flex; flex-direction:column; gap:10px;"></div>
+    <button id="nextBtn" style="margin-top:15px; padding:10px 15px; border:none; border-radius:10px; background:#27ae60; color:white; cursor:pointer;">Next</button>
+    <p id="quizProgress" style="margin-top:10px;"></p>
+  </div>
+</div>
+
+  <!-- MAIN APP -->
+  <div id="mainApp" class="app" style="display:none;">
+    <header class="app-header">
+      <div class="title-group">
+        <h1>Healthcare Companion</h1>
+        <p class="subtitle">Daily health check, habits & reflections</p>
+      </div>
+
+      <div class="controls">
+        <button id="darkModeToggle" class="btn">🌙 Dark</button>
+        <button id="pastelModeToggle" class="btn">🎨 Pastel</button>
+        <button id="resetData" class="btn warn">Reset Data</button>
+      </div>
+    </header>
+
+    <div class="layout">
+      <aside class="sidebar">
+        <button class="tab active" data-target="dashboard">Dashboard</button>
+        <button class="tab" data-target="habits">Habits</button>
+        <button class="tab" data-target="mood">Mood & Journal</button>
+        <button class="tab" data-target="quizSummary">Quiz Summary</button>
+      </aside>
+
+      <main class="main">
+        <!-- Dashboard -->
+        <section id="dashboard" class="panel active">
+          <h2>Today's Overview</h2>
+          <div id="dashboardSummary" class="card"></div>
+
+          <div class="cards-row">
+            <div class="card">
+              <h3>Mood History</h3>
+              <canvas id="moodChart" height="120"></canvas>
+            </div>
+            <div class="card">
+              <h3>Habit Streaks</h3>
+              <canvas id="habitChart" height="120"></canvas>
+            </div>
+          </div>
+        </section>
+
+        <!-- Habits -->
+        <section id="habits" class="panel">
+          <h2>Habits Tracker</h2>
+          <div class="card">
+            <label><input type="checkbox" class="habit" data-habit="Exercise"> Exercise 30+ mins</label>
+            <label><input type="checkbox" class="habit" data-habit="Sleep"> Sleep 7-9 hrs</label>
+            <label><input type="checkbox" class="habit" data-habit="Water"> Drink 2L Water</label>
+            <div style="margin-top:12px;">
+              <button id="saveHabitsBtn" class="btn primary">Save Habits</button>
+            </div>
+          </div>
+        </section>
+
+        <!-- Mood & Journal -->
+        <section id="mood" class="panel">
+          <h2>Mood Tracker & Journal</h2>
+
+          <div class="card">
+            <div class="moods">
+              <button class="moodBtn" data-mood="happy">😊</button>
+              <button class="moodBtn" data-mood="neutral">😐</button>
+              <button class="moodBtn" data-mood="sad">😔</button>
+            </div>
+            <p id="selectedMood">Selected Mood: —</p>
+          </div>
+
+          <div class="card">
+            <h3>Daily Reflection</h3>
+            <textarea id="journalEntry" placeholder="Write a short reflection..."></textarea>
+            <div class="row">
+              <button id="saveJournalBtn" class="btn primary">Save Reflection</button>
+              <button id="exportJournal" class="btn">Export</button>
+            </div>
+            <h4>Previous Entries</h4>
+            <ul id="journalList" class="list"></ul>
+          </div>
+        </section>
+
+        <!-- Quiz Summary -->
+        <section id="quizSummary" class="panel">
+          <h2>Quiz Results & Health Warnings</h2>
+          <div id="quizResultArea" class="card"></div>
+        </section>
+      </main>
+    </div>
+
+    <footer class="footer">
+      <p>Built by Brighton Brandley Odhiambo — Data stored locally. Not a medical diagnosis. For serious concerns consult a professional.</p>
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

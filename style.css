@@ -1,0 +1,115 @@
+/* Purple-themed Healthcare Companion - style.css */
+/* fonts: Poppins is referenced in earlier examples; if unavailable browser falls back */
+
+:root{
+  --bg1: #9c0af0;
+  --bg2: #7a2bbf;
+  --card: rgba(255,255,255,0.08);
+  --accent: #b266ff;
+  --muted: rgba(179, 9, 231, 0.85);
+  --glass: rgba(93, 0, 136, 0.06);
+}
+
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family: "Poppins", system-ui, -apple-system, "Segoe UI", Roboto, Arial;
+  background: linear-gradient(135deg, var(--bg1), var(--bg2));
+  color:#fff;
+  -webkit-font-smoothing:antialiased;
+  min-height:100vh;
+}
+
+/* App layout */
+.app-header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:22px 18px;
+}
+.title-group h1{ margin:0; font-size:22px; letter-spacing:0.2px }
+.subtitle{ margin:0; font-size:12px; color:rgba(255,255,255,0.9) }
+
+.controls .btn{ margin-left:8px }
+
+/* Buttons */
+.btn{
+  border: none;
+  padding:8px 12px;
+  border-radius:10px;
+  cursor:pointer;
+  background: rgba(255,255,255,0.12);
+  color: #fff;
+  transition: transform .12s ease, box-shadow .12s;
+}
+.btn:hover{ transform: translateY(-2px); box-shadow:0 8px 18px rgba(0,0,0,0.18) }
+.btn.primary{ background: linear-gradient(90deg,#6b2bff,#b266ff); font-weight:600 }
+.btn.warn{ background: linear-gradient(90deg,#ff7a7a,#ff4d4d); font-weight:600 }
+
+/* Layout */
+.layout{ display:flex; gap:18px; padding:18px }
+.sidebar{ width:200px; display:flex; flex-direction:column; gap:10px }
+.tab{
+  background: rgba(255,255,255,0.06);
+  color:#fff;
+  padding:12px;
+  border-radius:12px;
+  border:none;
+  text-align:left;
+  cursor:pointer;
+}
+.tab.active{ background: linear-gradient(90deg,#8a3bff,#b266ff); box-shadow:0 8px 24px rgba(0,0,0,0.25) }
+
+/* Main */
+.main{ flex:1 }
+.panel{ display:none }
+.panel.active{ display:block }
+
+.card{
+  background: var(--card);
+  padding:14px;
+  border-radius:12px;
+  margin-bottom:14px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.16);
+}
+
+.cards-row{ display:flex; gap:12px; margin-top:12px; flex-wrap:wrap }
+.cards-row .card{ flex:1; min-width:240px }
+
+/* Modal */
+.modal{ position:fixed; inset:0; display:flex; align-items:center; justify-content:center; z-index:999; background:linear-gradient(180deg, rgba(0,0,0,0.45), rgba(0,0,0,0.55)) }
+.modal-card{ width:92%; max-width:720px; border-radius:14px; padding:18px; background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02)); box-shadow:0 24px 60px rgba(0,0,0,0.6); color:var(--muted) }
+
+.modal-header{ display:flex; gap:12px; align-items:center }
+.logo{ width:56px; height:56px; border-radius:10px; object-fit:cover; background: linear-gradient(90deg,#ffefff,#e8d6ff) }
+
+.modal-header h2{ margin:0; font-size:20px; color:#fff }
+
+.options{ margin-top:16px; display:grid; grid-template-columns:repeat(2,1fr); gap:12px }
+.options button{ padding:12px; border-radius:10px; background: rgba(255,255,255,0.05); color:#fff; border:none; cursor:pointer; text-align:left }
+.options button:hover{ transform:translateY(-4px); box-shadow:0 10px 30px rgba(0,0,0,0.5) }
+
+.modal-footer{ display:flex; justify-content:space-between; align-items:center; margin-top:14px }
+#quizProgress{ color: rgba(255,255,255,0.75) }
+
+/* Mood buttons */
+.moods{ display:flex; gap:8px }
+.moodBtn{ background:linear-gradient(180deg,#ffd6f0,#ffb6e6); border:none; padding:12px; border-radius:10px; font-size:20px; cursor:pointer }
+
+/* lists and inputs */
+.list{ list-style:none; padding-left:0; margin:8px 0 0 0 }
+.list li{ padding:8px 0; border-bottom:1px solid rgba(255,255,255,0.03) }
+textarea{ width:100%; min-height:90px; padding:10px; border-radius:10px; border:none; background:rgba(0,0,0,0.08); color:#fff }
+
+/* footer */
+.footer{ text-align:center; padding:18px; opacity:0.9; font-size:13px }
+
+/* Dark / Pastel mode tweaks */
+.dark-mode{ background: linear-gradient(135deg,#2a0733,#1b0320); color:#fff }
+.pastel-mode{ background: linear-gradient(135deg,#f7e6ff,#e9d6ff); color:#222 }
+
+@media (max-width:900px){
+  .layout{ flex-direction:column }
+  .sidebar{ width:100%; flex-direction:row; overflow:auto }
+  .options{ grid-template-columns:1fr }
+}
